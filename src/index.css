@@ -5,23 +5,23 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    --background: 230 100% 99%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 244 58% 35%;
+    --primary: 263 70% 50%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 173 80% 32%;
+    --secondary: 186 100% 42%;
     --secondary-foreground: 210 40% 98%;
 
-    --accent: 33 98% 44%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 43 96% 56%;
+    --accent-foreground: 240 5.9% 10%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
@@ -31,18 +31,18 @@
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 222 47% 11%;
+    --ring: 262 70% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 244 58% 35%;
+    --sidebar-background: 263 70% 50%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 173 80% 32%;
+    --sidebar-primary: 186 100% 42%;
     --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 33 98% 44%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 244 48% 30%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-accent: 43 96% 56%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 263 60% 45%;
+    --sidebar-ring: 262 70% 50%;
   }
 
   * {
@@ -50,24 +50,48 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased font-sans;
   }
 }
 
 @layer components {
   .stat-card {
-    @apply bg-white rounded-lg p-6 shadow-sm border border-border hover:shadow-md transition-shadow duration-300;
+    @apply bg-gradient-to-br from-white to-gray-50 rounded-2xl p-6 shadow-md border border-border hover:shadow-lg transition-all duration-300;
   }
   
   .data-card {
-    @apply bg-white rounded-lg shadow-sm border border-border overflow-hidden transition-all duration-300 hover:shadow-md;
+    @apply bg-white rounded-2xl shadow-md border border-border overflow-hidden transition-all duration-300 hover:shadow-lg;
   }
   
   .sidebar-item {
-    @apply flex items-center gap-3 px-3 py-2 rounded-md text-sidebar-foreground/90 hover:bg-white/10 hover:text-sidebar-foreground transition-colors duration-200;
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-sidebar-foreground/90 hover:bg-white/10 hover:text-sidebar-foreground transition-all duration-200;
   }
   
   .sidebar-item.active {
-    @apply bg-white/10 text-sidebar-foreground font-medium;
+    @apply bg-white/15 text-sidebar-foreground font-medium;
+  }
+
+  .dashboard-header {
+    @apply bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 rounded-2xl p-6 mb-6 animate-fade-in;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:opacity-90 transition-opacity;
+  }
+
+  .card-gradient-primary {
+    @apply bg-gradient-to-br from-primary/80 to-primary/60 text-white;
+  }
+  
+  .card-gradient-secondary {
+    @apply bg-gradient-to-br from-secondary/80 to-secondary/60 text-white;
+  }
+  
+  .card-gradient-accent {
+    @apply bg-gradient-to-br from-accent/90 to-accent/70 text-accent-foreground;
+  }
+  
+  .card-gradient-purple {
+    @apply bg-gradient-to-br from-purple-500/90 to-purple-700/80 text-white;
   }
 }
