@@ -73,7 +73,7 @@ const getStatusColor = (status: string) => {
 
 export function ProductCustomers() {
   return (
-    <div className="data-card">
+    <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
       <div className="p-6 flex justify-between items-center border-b border-border">
         <h2 className="text-lg font-semibold">Product Customers</h2>
         <Button variant="outline" size="sm">View All</Button>
