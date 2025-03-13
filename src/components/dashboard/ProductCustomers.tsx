@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const customers = [
   {
@@ -73,56 +74,58 @@ const getStatusColor = (status: string) => {
 
 export function ProductCustomers() {
   return (
-    <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
-      <div className="p-6 flex justify-between items-center border-b border-border">
-        <h2 className="text-lg font-semibold">Product Customers</h2>
+    <Card className="shadow-md hover:shadow-lg transition-all duration-300">
+      <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0 border-b">
+        <CardTitle className="text-lg font-semibold">Product Customers</CardTitle>
         <Button variant="outline" size="sm">View All</Button>
-      </div>
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Customer</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Orders</TableHead>
-              <TableHead>Spent</TableHead>
-              <TableHead>Last Order</TableHead>
-              <TableHead className="w-[50px]"></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {customers.map((customer) => (
-              <TableRow key={customer.id}>
-                <TableCell>
-                  <div className="flex items-center space-x-3">
-                    <Avatar className="h-9 w-9">
-                      <AvatarImage src={customer.avatar} alt={customer.name} />
-                      <AvatarFallback>{customer.name.substring(0, 2)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-medium">{customer.name}</p>
-                      <p className="text-xs text-muted-foreground">{customer.email}</p>
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <Badge variant="outline" className={getStatusColor(customer.status)}>
-                    {customer.status.charAt(0).toUpperCase() + customer.status.slice(1)}
-                  </Badge>
-                </TableCell>
-                <TableCell className="font-medium">{customer.orderCount}</TableCell>
-                <TableCell>{customer.totalSpent}</TableCell>
-                <TableCell>{customer.lastOrder}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <MoreHorizontal className="h-4 w-4" />
-                  </Button>
-                </TableCell>
+      </CardHeader>
+      <CardContent className="px-0 py-0">
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Customer</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Orders</TableHead>
+                <TableHead>Spent</TableHead>
+                <TableHead>Last Order</TableHead>
+                <TableHead className="w-[50px]"></TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
+            </TableHeader>
+            <TableBody>
+              {customers.map((customer) => (
+                <TableRow key={customer.id}>
+                  <TableCell>
+                    <div className="flex items-center space-x-3">
+                      <Avatar className="h-9 w-9">
+                        <AvatarImage src={customer.avatar} alt={customer.name} />
+                        <AvatarFallback>{customer.name.substring(0, 2)}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-medium">{customer.name}</p>
+                        <p className="text-xs text-muted-foreground">{customer.email}</p>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="outline" className={getStatusColor(customer.status)}>
+                      {customer.status.charAt(0).toUpperCase() + customer.status.slice(1)}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="font-medium">{customer.orderCount}</TableCell>
+                  <TableCell>{customer.totalSpent}</TableCell>
+                  <TableCell>{customer.lastOrder}</TableCell>
+                  <TableCell>
+                    <Button variant="ghost" size="icon">
+                      <MoreHorizontal className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </CardContent>
+    </Card>
   );
 }
