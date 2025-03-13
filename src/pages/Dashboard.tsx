@@ -5,6 +5,7 @@ import { StatCard } from '@/components/dashboard/StatCard';
 import { SalesChart } from '@/components/dashboard/SalesChart';
 import { RecentOrders } from '@/components/dashboard/RecentOrders';
 import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { ProductCustomers } from '@/components/dashboard/ProductCustomers';
 
 const Dashboard = () => {
   return (
@@ -56,7 +57,8 @@ const Dashboard = () => {
         <RecentActivity />
       </div>
       
-      <div className="animate-fade-in" style={{animationDelay: "0.3s"}}>
+      <div className="grid grid-cols-1 gap-6 animate-fade-in" style={{animationDelay: "0.3s"}}>
+        <ProductCustomers />
         <RecentOrders />
       </div>
     </div>
