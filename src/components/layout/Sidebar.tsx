@@ -10,8 +10,7 @@ import {
   ShoppingCart, 
   Layers, 
   ChevronLeft,
-  ChevronRight,
-  Sparkles
+  ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -43,16 +42,17 @@ const Sidebar = () => {
     )}>
       <div className="flex items-center p-4 h-16 border-b border-sidebar-border/50">
         {!collapsed && (
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            Admin<span className="text-sidebar-accent">Dash</span>
-            <Sparkles className="h-4 w-4 text-sidebar-accent" />
-          </h1>
+          <div className="w-full flex justify-center">
+            <img 
+              src="/lovable-uploads/e1fa932d-200e-41b7-aadb-60a7796b3864.png" 
+              alt="Oriwa International" 
+              className="h-10 max-w-full object-contain"
+            />
+          </div>
         )}
         {collapsed && (
           <div className="w-full flex justify-center">
-            <span className="font-bold text-white flex items-center">
-              <span className="text-sidebar-accent">A</span>D
-            </span>
+            <div className="h-8 w-8 rounded-full bg-sidebar-accent flex items-center justify-center text-sidebar-accent-foreground font-bold">O</div>
           </div>
         )}
       </div>
