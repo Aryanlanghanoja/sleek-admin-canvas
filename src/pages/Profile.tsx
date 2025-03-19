@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { UploadCloud } from "lucide-react";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -18,6 +19,9 @@ const Profile = () => {
     location: "San Francisco, CA",
     website: "https://johndoe.com",
   });
+
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,6 +39,45 @@ const Profile = () => {
     });
   };
 
+  const handleImageClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    // File size validation (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Error",
+        description: "Image size must be less than 5MB",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // File type validation
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: "Error",
+        description: "Please upload an image file",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setAvatarUrl(reader.result as string);
+      toast({
+        title: "Success",
+        description: "Profile photo updated. Remember to save your changes.",
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <DashboardLayout>
       <div className="container py-6 max-w-5xl animate-fade-in">
@@ -45,10 +88,30 @@ const Profile = () => {
           <Card className="md:col-span-1 shadow-md">
             <CardHeader className="text-center">
               <div className="flex justify-center mb-4">
-                <Avatar className="h-24 w-24">
-                  <AvatarImage src="/placeholder.svg" alt="Profile" />
-                  <AvatarFallback className="text-xl">JD</AvatarFallback>
-                </Avatar>
+                <div className="relative group">
+                  <Avatar className="h-24 w-24 cursor-pointer" onClick={handleImageClick}>
+                    <AvatarImage src={avatarUrl || "/placeholder.svg"} alt="Profile" />
+                    <AvatarFallback className="text-xl">JD</AvatarFallback>
+                  </Avatar>
+                  <div 
+                    className="absolute inset-0 bg-black/30 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                    onClick={handleImageClick}
+                  >
+                    <UploadCloud className="h-8 w-8 text-white" />
+                  </div>
+                  <input 
+                    type="file" 
+                    ref={fileInputRef} 
+                    className="hidden" 
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                </div>
+              </div>
+              <div className="text-center mb-2">
+                <Button variant="outline" size="sm" onClick={handleImageClick}>
+                  Change Photo
+                </Button>
               </div>
               <CardTitle>{profileData.name}</CardTitle>
               <CardDescription>{profileData.role}</CardDescription>
