@@ -40,7 +40,7 @@ const Dashboard = () => {
           icon={ShoppingCart}
           change={-2.3}
           trend="down"
-          className="card-gradient-accent"
+          className="card-gradient-accent text-white"
         />
         <StatCard 
           title="Conversion Rate" 

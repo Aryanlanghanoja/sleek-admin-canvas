@@ -1,4 +1,4 @@
-
+import logo from '../../assets/Logo.png';
 import { useState } from 'react';
 import { 
   BarChart3, 
@@ -44,7 +44,7 @@ const Sidebar = () => {
         {!collapsed && (
           <div className="w-full flex justify-center">
             <img 
-              src="/lovable-uploads/e1fa932d-200e-41b7-aadb-60a7796b3864.png" 
+              src={logo} 
               alt="Oriwa International" 
               className="h-10 max-w-full object-contain"
             />
