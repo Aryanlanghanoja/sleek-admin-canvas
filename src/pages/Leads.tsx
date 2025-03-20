@@ -2,6 +2,7 @@
 import { Helmet } from 'react-helmet';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { RecentLeads } from '@/components/dashboard/RecentLeads';
+import { ProductCustomers } from '@/components/dashboard/ProductCustomers'; 
 
 const Leads = () => {
   return (
@@ -17,8 +18,9 @@ const Leads = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 gap-6 w-full">
           <RecentLeads fullPage />
+          <ProductCustomers />
         </div>
       </div>
     </DashboardLayout>
