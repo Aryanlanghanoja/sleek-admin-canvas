@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   BarChart3, 
   Users, 
@@ -18,17 +19,23 @@ import { Button } from '@/components/ui/button';
 type SidebarLinkProps = {
   icon: React.ElementType;
   label: string;
-  isActive?: boolean;
+  to: string;
   isCollapsed?: boolean;
 };
 
-const SidebarLink = ({ icon: Icon, label, isActive, isCollapsed }: SidebarLinkProps) => {
+const SidebarLink = ({ icon: Icon, label, to, isCollapsed }: SidebarLinkProps) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
   return (
-    <a href="#" className={cn("sidebar-item", isActive && "active", "group")}>
+    <Link 
+      to={to} 
+      className={cn("sidebar-item", isActive && "active", "group")}
+    >
       <Icon size={20} />
       {!isCollapsed && <span className="transition-opacity duration-200">{label}</span>}
       {isCollapsed && <span className="absolute left-full ml-2 rounded bg-sidebar-accent px-2 py-1 text-xs text-sidebar-accent-foreground invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all">{label}</span>}
-    </a>
+    </Link>
   );
 };
 
@@ -59,17 +66,17 @@ const Sidebar = () => {
       
       <nav className="flex-1 px-3 py-6 space-y-1 overflow-y-auto">
         <div className="space-y-1">
-          <SidebarLink icon={BarChart3} label="Dashboard" isActive isCollapsed={collapsed} />
-          <SidebarLink icon={Layers} label="Products" isCollapsed={collapsed} />
-          <SidebarLink icon={UserPlus} label="Leads" isCollapsed={collapsed} />
-          <SidebarLink icon={Users} label="Customers" isCollapsed={collapsed} />
-          <SidebarLink icon={MessageSquare} label="Messages" isCollapsed={collapsed} />
-          <SidebarLink icon={Calendar} label="Calendar" isCollapsed={collapsed} />
+          <SidebarLink icon={BarChart3} label="Dashboard" to="/dashboard" isCollapsed={collapsed} />
+          <SidebarLink icon={Layers} label="Products" to="/products" isCollapsed={collapsed} />
+          <SidebarLink icon={UserPlus} label="Leads" to="/leads" isCollapsed={collapsed} />
+          <SidebarLink icon={Users} label="Customers" to="/customers" isCollapsed={collapsed} />
+          <SidebarLink icon={MessageSquare} label="Messages" to="/messages" isCollapsed={collapsed} />
+          <SidebarLink icon={Calendar} label="Calendar" to="/calendar" isCollapsed={collapsed} />
         </div>
         
         <div className="pt-4 mt-4 border-t border-sidebar-border/50 space-y-1">
-          <SidebarLink icon={Settings} label="Settings" isCollapsed={collapsed} />
-          <SidebarLink icon={HelpCircle} label="Help" isCollapsed={collapsed} />
+          <SidebarLink icon={Settings} label="Settings" to="/settings" isCollapsed={collapsed} />
+          <SidebarLink icon={HelpCircle} label="Help" to="/help" isCollapsed={collapsed} />
         </div>
       </nav>
       

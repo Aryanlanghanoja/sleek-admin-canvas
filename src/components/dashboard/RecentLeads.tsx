@@ -1,133 +1,195 @@
 
-import { Button } from '@/components/ui/button';
+import { UserPlus, MoreHorizontal, ArrowUpRight } from 'lucide-react';
 import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from '@/components/ui/table';
+  Card, 
+  CardContent, 
+  CardDescription, 
+  CardHeader, 
+  CardTitle 
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { MoreHorizontal, Mail, Phone } from 'lucide-react';
 
-const leads = [
+type LeadStatus = 'new' | 'contacted' | 'qualified' | 'proposal' | 'negotiation';
+
+interface Lead {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  source: string;
+  status: LeadStatus;
+  date: string;
+}
+
+const mockLeads: Lead[] = [
   {
-    id: 'LEAD-7425',
-    name: 'Michael Roberts',
-    email: 'michael.roberts@example.com',
+    id: 1,
+    name: 'John Smith',
+    email: 'john.smith@example.com',
     phone: '+1 (555) 123-4567',
-    source: 'website',
+    source: 'Website',
     status: 'new',
-    date: '2023-09-12'
+    date: '2023-07-15'
   },
   {
-    id: 'LEAD-7424',
-    name: 'Jennifer Lopez',
-    email: 'jennifer.lopez@example.com',
+    id: 2,
+    name: 'Sarah Johnson',
+    email: 'sarah.j@company.co',
     phone: '+1 (555) 987-6543',
-    source: 'referral',
+    source: 'Referral',
     status: 'contacted',
-    date: '2023-09-11'
+    date: '2023-07-14'
   },
   {
-    id: 'LEAD-7423',
-    name: 'Robert Chen',
-    email: 'robert.chen@example.com',
+    id: 3,
+    name: 'Michael Brown',
+    email: 'michael.b@enterprise.org',
     phone: '+1 (555) 456-7890',
-    source: 'social',
+    source: 'LinkedIn',
     status: 'qualified',
-    date: '2023-09-10'
+    date: '2023-07-12'
   },
   {
-    id: 'LEAD-7422',
+    id: 4,
     name: 'Emily Davis',
-    email: 'emily.davis@example.com',
-    phone: '+1 (555) 234-5678',
-    source: 'event',
-    status: 'negotiation',
-    date: '2023-09-09'
+    email: 'emily.davis@corp.net',
+    phone: '+1 (555) 789-0123',
+    source: 'Trade Show',
+    status: 'proposal',
+    date: '2023-07-10'
   },
   {
-    id: 'LEAD-7421',
-    name: 'Alex Johnson',
-    email: 'alex.johnson@example.com',
+    id: 5,
+    name: 'David Wilson',
+    email: 'd.wilson@business.com',
+    phone: '+1 (555) 234-5678',
+    source: 'Cold Call',
+    status: 'negotiation',
+    date: '2023-07-08'
+  },
+  {
+    id: 6,
+    name: 'Jennifer Lopez',
+    email: 'jennifer@examplecorp.com',
     phone: '+1 (555) 876-5432',
-    source: 'advertisement',
-    status: 'closed',
-    date: '2023-09-08'
+    source: 'Website',
+    status: 'new',
+    date: '2023-07-07'
+  },
+  {
+    id: 7,
+    name: 'Robert Taylor',
+    email: 'robert.t@industryltd.co',
+    phone: '+1 (555) 345-6789',
+    source: 'Email Campaign',
+    status: 'contacted',
+    date: '2023-07-05'
+  },
+  {
+    id: 8,
+    name: 'Amanda Miller',
+    email: 'a.miller@techfirm.io',
+    phone: '+1 (555) 654-3210',
+    source: 'Conference',
+    status: 'qualified',
+    date: '2023-07-03'
   }
 ];
 
-const getStatusColor = (status: string) => {
+const getStatusColor = (status: LeadStatus) => {
   switch (status) {
     case 'new':
-      return 'bg-blue-100 text-blue-800 hover:bg-blue-200';
+      return 'bg-blue-500 text-white';
     case 'contacted':
-      return 'bg-purple-100 text-purple-800 hover:bg-purple-200';
+      return 'bg-yellow-500 text-white';
     case 'qualified':
-      return 'bg-indigo-100 text-indigo-800 hover:bg-indigo-200';
+      return 'bg-green-500 text-white';
+    case 'proposal':
+      return 'bg-purple-500 text-white';
     case 'negotiation':
-      return 'bg-amber-100 text-amber-800 hover:bg-amber-200';
-    case 'closed':
-      return 'bg-green-100 text-green-800 hover:bg-green-200';
+      return 'bg-orange-500 text-white';
     default:
-      return 'bg-gray-100 text-gray-800 hover:bg-gray-200';
+      return 'bg-gray-500 text-white';
   }
 };
 
-export function RecentLeads() {
-  return (
-    <div className="data-card">
-      <div className="p-6 flex justify-between items-center border-b border-border">
-        <h2 className="text-lg font-semibold">Recent Leads</h2>
-        <Button variant="outline" size="sm">View All</Button>
-      </div>
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Lead ID</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Contact</TableHead>
-              <TableHead>Source</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Date Added</TableHead>
-              <TableHead className="w-[50px]"></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {leads.map((lead) => (
-              <TableRow key={lead.id}>
-                <TableCell className="font-medium">{lead.id}</TableCell>
-                <TableCell>{lead.name}</TableCell>
-                <TableCell>
-                  <div className="flex flex-col gap-1">
-                    <div className="flex items-center text-xs text-muted-foreground">
-                      <Mail className="h-3 w-3 mr-1" /> {lead.email}
-                    </div>
-                    <div className="flex items-center text-xs text-muted-foreground">
-                      <Phone className="h-3 w-3 mr-1" /> {lead.phone}
-                    </div>
-                  </div>
-                </TableCell>
-                <TableCell className="capitalize">{lead.source}</TableCell>
-                <TableCell>
-                  <Badge variant="outline" className={getStatusColor(lead.status)}>
-                    {lead.status.charAt(0).toUpperCase() + lead.status.slice(1)}
-                  </Badge>
-                </TableCell>
-                <TableCell>{lead.date}</TableCell>
-                <TableCell>
-                  <Button variant="ghost" size="icon">
-                    <MoreHorizontal className="h-4 w-4" />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-    </div>
-  );
+interface RecentLeadsProps {
+  fullPage?: boolean;
 }
+
+export const RecentLeads = ({ fullPage = false }: RecentLeadsProps) => {
+  const displayLeads = fullPage ? mockLeads : mockLeads.slice(0, 5);
+
+  return (
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <div>
+          <CardTitle className="text-xl font-bold">Recent Leads</CardTitle>
+          <CardDescription>
+            {fullPage ? 'Manage all your leads' : 'Recently added leads and their current status'}
+          </CardDescription>
+        </div>
+        {!fullPage && (
+          <Button variant="outline" size="sm" asChild>
+            <a href="/leads">
+              View All
+              <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        )}
+      </CardHeader>
+      <CardContent>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="border-b">
+                <th className="text-left p-2 font-medium text-muted-foreground">Name</th>
+                <th className="text-left p-2 font-medium text-muted-foreground">Contact</th>
+                <th className="text-left p-2 font-medium text-muted-foreground">Source</th>
+                <th className="text-left p-2 font-medium text-muted-foreground">Status</th>
+                <th className="text-left p-2 font-medium text-muted-foreground">Date</th>
+                <th className="text-left p-2 font-medium text-muted-foreground sr-only">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {displayLeads.map((lead) => (
+                <tr key={lead.id} className="border-b last:border-0 hover:bg-muted/50">
+                  <td className="p-2">
+                    <div className="font-medium">{lead.name}</div>
+                    {fullPage && <div className="text-sm text-muted-foreground">{lead.email}</div>}
+                  </td>
+                  <td className="p-2">
+                    {fullPage 
+                      ? lead.phone 
+                      : <div className="text-sm">{lead.email}</div>
+                    }
+                  </td>
+                  <td className="p-2">{lead.source}</td>
+                  <td className="p-2">
+                    <Badge className={getStatusColor(lead.status)}>
+                      {lead.status.charAt(0).toUpperCase() + lead.status.slice(1)}
+                    </Badge>
+                  </td>
+                  <td className="p-2 text-sm">{lead.date}</td>
+                  <td className="p-2">
+                    <Button variant="ghost" size="icon" className="h-8 w-8">
+                      <MoreHorizontal className="h-4 w-4" />
+                      <span className="sr-only">More options</span>
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {fullPage && (
+          <div className="mt-4 flex justify-center">
+            <Button variant="outline" className="mr-2">Previous</Button>
+            <Button variant="outline">Next</Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
