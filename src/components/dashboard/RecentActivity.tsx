@@ -38,15 +38,15 @@ const activities = [
     icon: AlertCircle,
     iconColor: "text-red-500 bg-red-100"
   },
-  {
-    id: 5,
-    user: { name: "Emily Davis", avatar: "/placeholder.svg", initials: "ED" },
-    action: "shipped order",
-    target: "#ORD-74492",
-    time: "1 day ago",
-    icon: CheckCircle2,
-    iconColor: "text-green-500 bg-green-100"
-  }
+  // {
+  //   id: 5,
+  //   user: { name: "Emily Davis", avatar: "/placeholder.svg", initials: "ED" },
+  //   action: "shipped order",
+  //   target: "#ORD-74492",
+  //   time: "1 day ago",
+  //   icon: CheckCircle2,
+  //   iconColor: "text-green-500 bg-green-100"
+  // }
 ];
 
 export function RecentActivity() {

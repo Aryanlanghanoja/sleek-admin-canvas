@@ -114,11 +114,11 @@ const getStatusColor = (status: LeadStatus) => {
   }
 };
 
-interface RecentOrdersProps {
+interface RecentLeadsProps {
   fullPage?: boolean;
 }
 
-export const RecentOrders = ({ fullPage = false }: RecentOrdersProps) => {
+export const RecentLeads = ({ fullPage = false }: RecentLeadsProps) => {
   const displayLeads = fullPage ? mockLeads : mockLeads.slice(0, 5);
 
   return (

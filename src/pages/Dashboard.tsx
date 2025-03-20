@@ -1,67 +1,77 @@
-
-import { BarChart3, DollarSign, ShoppingCart, Users, Sparkles } from 'lucide-react';
-
-import { StatCard } from '@/components/dashboard/StatCard';
+import { Helmet } from 'react-helmet';
 import { SalesChart } from '@/components/dashboard/SalesChart';
-import { RecentOrders } from '@/components/dashboard/RecentOrders';
-import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { StatCard } from '@/components/dashboard/StatCard';
+import { RecentLeads } from '@/components/dashboard/RecentLeads';
 import { ProductCustomers } from '@/components/dashboard/ProductCustomers';
+import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { BarChart3, Users, ShieldCheck, Percent, ShoppingCart, DollarSign } from 'lucide-react';
+import { RecentOrders } from '@/components/dashboard/RecentOrders';
 
 const Dashboard = () => {
   return (
-    <div className="p-6 space-y-6">
-      <div className="dashboard-header">
-        <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
-          Dashboard <Sparkles className="h-5 w-5 text-accent" />
-        </h1>
-        <p className="text-muted-foreground">Welcome back! Here's an overview of your business.</p>
+    <>
+      <div>
+        {/* Page Title */}
+        <Helmet>
+          <title>Dashboard | Griwa International</title>
+        </Helmet>
+
+        {/* Main Container */}
+        <div className="p-6 space-y-8">
+          
+          {/* Header Section */}
+          <div className="dashboard-header">
+            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+            <p className="text-gray-500">Welcome back to your dashboard.</p>
+          </div>
+
+          {/* Stat Cards Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <StatCard 
+              title="Total Revenue" 
+              value="$45,231.89" 
+              icon={BarChart3}
+              change={20.1} 
+              trend="up" 
+              className="bg-gradient-to-r from-green-500 to-green-400 text-white rounded-lg shadow-lg p-6 hover:shadow-xl transition"
+            />
+            <StatCard 
+              title="New Leads" 
+              value="1,234"
+              icon={Users} 
+              change={12.3} 
+              trend="up" 
+              className="bg-gradient-to-r from-blue-500 to-blue-400 text-white rounded-lg shadow-lg p-6 hover:shadow-xl transition"
+            />
+            <StatCard 
+              title="Active Customers" 
+              value="573"
+              icon={ShieldCheck} 
+              change={7.5} 
+              trend="up" 
+              className="bg-gradient-to-r from-indigo-500 to-indigo-400 text-white rounded-lg shadow-lg p-6 hover:shadow-xl transition"
+            />
+            <StatCard 
+              title="Conversion Rate" 
+              value="4.35%"
+              icon={Percent} 
+              change={-3.2} 
+              trend="down" 
+              className="bg-gradient-to-r from-red-500 to-red-400 text-white rounded-lg shadow-lg p-6 hover:shadow-xl transition"
+            />
+          </div>
+
+          {/* Leads and Customers Section */}
+          <div className="grid grid-cols-1 p-2 gap-6">
+            <RecentLeads />
+          </div>
+
+          <div className="grid grid-cols-1 gap-6">
+            <RecentOrders />
+          </div>
+        </div>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in" style={{animationDelay: "0.1s"}}>
-        <StatCard 
-          title="Total Revenue" 
-          value="$45,231.89" 
-          icon={DollarSign}
-          change={12.5}
-          trend="up"
-          className="card-gradient-primary"
-        />
-        <StatCard 
-          title="New Customers" 
-          value="2,845" 
-          icon={Users}
-          change={5.2}
-          trend="up"
-          className="card-gradient-secondary"
-        />
-        <StatCard 
-          title="Total Orders" 
-          value="1,759" 
-          icon={ShoppingCart}
-          change={-2.3}
-          trend="down"
-          className="card-gradient-accent text-white"
-        />
-        <StatCard 
-          title="Conversion Rate" 
-          value="3.24%" 
-          icon={BarChart3}
-          change={0.8}
-          trend="up"
-          className="card-gradient-purple"
-        />
-      </div>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{animationDelay: "0.2s"}}>
-        <SalesChart />
-        <RecentActivity />
-      </div>
-      
-      <div className="grid grid-cols-1 gap-6 animate-fade-in" style={{animationDelay: "0.3s"}}>
-        <ProductCustomers />
-        <RecentOrders />
-      </div>
-    </div>
+    </>
   );
 };
 
