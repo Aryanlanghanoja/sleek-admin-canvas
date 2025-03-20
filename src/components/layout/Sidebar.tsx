@@ -7,7 +7,7 @@ import {
   HelpCircle, 
   Calendar, 
   MessageSquare, 
-  ShoppingCart, 
+  UserPlus, 
   Layers, 
   ChevronLeft,
   ChevronRight
@@ -61,7 +61,7 @@ const Sidebar = () => {
         <div className="space-y-1">
           <SidebarLink icon={BarChart3} label="Dashboard" isActive isCollapsed={collapsed} />
           <SidebarLink icon={Layers} label="Products" isCollapsed={collapsed} />
-          <SidebarLink icon={ShoppingCart} label="Orders" isCollapsed={collapsed} />
+          <SidebarLink icon={UserPlus} label="Leads" isCollapsed={collapsed} />
           <SidebarLink icon={Users} label="Customers" isCollapsed={collapsed} />
           <SidebarLink icon={MessageSquare} label="Messages" isCollapsed={collapsed} />
           <SidebarLink icon={Calendar} label="Calendar" isCollapsed={collapsed} />
