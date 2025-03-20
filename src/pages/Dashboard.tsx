@@ -5,6 +5,7 @@ import { StatCard } from '@/components/dashboard/StatCard';
 import { RecentLeads } from '@/components/dashboard/RecentLeads';
 import { ProductCustomers } from '@/components/dashboard/ProductCustomers';
 import { RecentActivity } from '@/components/dashboard/RecentActivity';
+import { BarChart3, Users, ShieldCheck, Percent } from 'lucide-react';
 
 const Dashboard = () => {
   return (
@@ -22,30 +23,34 @@ const Dashboard = () => {
           <StatCard 
             title="Total Revenue" 
             value="$45,231.89" 
-            change="+20.1%" 
+            icon={BarChart3}
+            change={20.1} 
             trend="up" 
-            description="Revenue this month" 
+            className="bg-white rounded-lg shadow-sm p-6"
           />
           <StatCard 
             title="New Leads" 
-            value="1,234" 
-            change="+12.3%" 
+            value="1,234"
+            icon={Users} 
+            change={12.3} 
             trend="up" 
-            description="New leads this month" 
+            className="bg-white rounded-lg shadow-sm p-6"
           />
           <StatCard 
             title="Active Customers" 
-            value="573" 
-            change="+7.5%" 
+            value="573"
+            icon={ShieldCheck} 
+            change={7.5} 
             trend="up" 
-            description="Active users" 
+            className="bg-white rounded-lg shadow-sm p-6"
           />
           <StatCard 
             title="Conversion Rate" 
-            value="4.35%" 
-            change="-3.2%" 
+            value="4.35%"
+            icon={Percent} 
+            change={-3.2} 
             trend="down" 
-            description="From last month" 
+            className="bg-white rounded-lg shadow-sm p-6"
           />
         </div>
 
