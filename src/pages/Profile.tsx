@@ -1,13 +1,12 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import DashboardLayout from "@/components/layout/DashboardLayout";
 import { useState, useRef } from "react";
 import { toast } from "@/components/ui/use-toast";
 import { UploadCloud } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
@@ -79,7 +78,10 @@ const Profile = () => {
   };
 
   return (
-    <DashboardLayout>
+    <>
+      <Helmet>
+        <title>Profile | Oriwa International</title>
+      </Helmet>
       <div className="container py-6 max-w-5xl animate-fade-in">
         <h1 className="text-3xl font-bold mb-6">My Profile</h1>
 
@@ -108,11 +110,6 @@ const Profile = () => {
                   />
                 </div>
               </div>
-              {/* <div className="text-center mb-2">
-                <Button variant="outline" size="sm" onClick={handleImageClick}>
-                  Change Photo
-                </Button>
-              </div> */}
               <CardTitle>{profileData.name}</CardTitle>
               <CardDescription>{profileData.role}</CardDescription>
             </CardHeader>
@@ -133,7 +130,6 @@ const Profile = () => {
                 <p className="text-muted-foreground">Website</p>
                 <p className="font-medium">{profileData.website}</p>
               </div>
-              {/* <Button variant="outline" className="w-full">Change Password</Button> */}
             </CardContent>
           </Card>
 
@@ -143,7 +139,6 @@ const Profile = () => {
               <TabsList className="mb-6">
                 <TabsTrigger value="personal">Personal Info</TabsTrigger>
                 <TabsTrigger value="account">Account Settings</TabsTrigger>
-                {/* <TabsTrigger value="notifications">Notifications</TabsTrigger> */}
               </TabsList>
 
               <TabsContent value="personal" className="space-y-4">
@@ -299,29 +294,11 @@ const Profile = () => {
                   </CardContent>
                 </Card>
               </TabsContent>
-
-              {/* <TabsContent value="notifications" className="space-y-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Notification Preferences</CardTitle>
-                    <CardDescription>
-                      Choose what notifications you want to receive
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <p className="text-muted-foreground">
-                        Notification settings coming soon...
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </TabsContent> */}
             </Tabs>
           </div>
         </div>
       </div>
-    </DashboardLayout>
+    </>
   );
 };
 
