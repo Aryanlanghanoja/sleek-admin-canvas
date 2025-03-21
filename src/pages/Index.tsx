@@ -1,15 +1,9 @@
 
-import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import DashboardLayout from "@/components/layout/DashboardLayout";
-import Dashboard from "./Dashboard";
+import { Navigate } from "react-router-dom";
 
+// This page is no longer needed as we're redirecting from "/" to "/dashboard" in App.tsx
 const Index = () => {
-  return (
-    <DashboardLayout>
-      <Dashboard />
-    </DashboardLayout>
-  );
+  return <Navigate to="/dashboard" replace />;
 };
 
 export default Index;

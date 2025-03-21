@@ -1,3 +1,4 @@
+
 import { Helmet } from 'react-helmet';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { RecentLeads } from '@/components/dashboard/RecentLeads';
