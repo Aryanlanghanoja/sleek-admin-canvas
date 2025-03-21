@@ -11,13 +11,13 @@ import { UploadCloud } from "lucide-react";
 
 const Profile = () => {
   const [profileData, setProfileData] = useState({
-    name: "John Doe",
-    email: "john.doe@example.com",
-    role: "Administrator",
-    company: "Acme Inc.",
-    bio: "Product manager with 5+ years of experience in SaaS products.",
-    location: "San Francisco, CA",
-    website: "https://johndoe.com",
+    name: "Narendra Modi",
+    email: "narendra.modi@gov.in",
+    role: "Prime Minister",
+    company: "India",
+    bio: "Prime Minister of India Since 2004",
+    location: "Prime Minister Office, New Delhi",
+    website: "https://www.narendramodi.in/",
   });
 
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -90,7 +90,7 @@ const Profile = () => {
               <div className="flex justify-center mb-4">
                 <div className="relative group">
                   <Avatar className="h-24 w-24 cursor-pointer" onClick={handleImageClick}>
-                    <AvatarImage src={avatarUrl || "/placeholder.svg"} alt="Profile" />
+                    <AvatarImage src={avatarUrl || "Admin.jpg"} alt="Profile" />
                     <AvatarFallback className="text-xl">JD</AvatarFallback>
                   </Avatar>
                   <div 
@@ -108,11 +108,11 @@ const Profile = () => {
                   />
                 </div>
               </div>
-              <div className="text-center mb-2">
+              {/* <div className="text-center mb-2">
                 <Button variant="outline" size="sm" onClick={handleImageClick}>
                   Change Photo
                 </Button>
-              </div>
+              </div> */}
               <CardTitle>{profileData.name}</CardTitle>
               <CardDescription>{profileData.role}</CardDescription>
             </CardHeader>
@@ -133,7 +133,7 @@ const Profile = () => {
                 <p className="text-muted-foreground">Website</p>
                 <p className="font-medium">{profileData.website}</p>
               </div>
-              <Button variant="outline" className="w-full">Change Password</Button>
+              {/* <Button variant="outline" className="w-full">Change Password</Button> */}
             </CardContent>
           </Card>
 
@@ -143,7 +143,7 @@ const Profile = () => {
               <TabsList className="mb-6">
                 <TabsTrigger value="personal">Personal Info</TabsTrigger>
                 <TabsTrigger value="account">Account Settings</TabsTrigger>
-                <TabsTrigger value="notifications">Notifications</TabsTrigger>
+                {/* <TabsTrigger value="notifications">Notifications</TabsTrigger> */}
               </TabsList>
 
               <TabsContent value="personal" className="space-y-4">
@@ -300,7 +300,7 @@ const Profile = () => {
                 </Card>
               </TabsContent>
 
-              <TabsContent value="notifications" className="space-y-4">
+              {/* <TabsContent value="notifications" className="space-y-4">
                 <Card>
                   <CardHeader>
                     <CardTitle>Notification Preferences</CardTitle>
@@ -310,14 +310,13 @@ const Profile = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {/* Notification settings would go here */}
                       <p className="text-muted-foreground">
                         Notification settings coming soon...
                       </p>
                     </div>
                   </CardContent>
                 </Card>
-              </TabsContent>
+              </TabsContent> */}
             </Tabs>
           </div>
         </div>

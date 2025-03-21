@@ -1,9 +1,6 @@
 import { Helmet } from 'react-helmet';
-import { SalesChart } from '@/components/dashboard/SalesChart';
 import { StatCard } from '@/components/dashboard/StatCard';
 import { RecentLeads } from '@/components/dashboard/RecentLeads';
-import { ProductCustomers } from '@/components/dashboard/ProductCustomers';
-import { RecentActivity } from '@/components/dashboard/RecentActivity';
 import { BarChart3, Users, ShieldCheck, Percent, ShoppingCart, DollarSign } from 'lucide-react';
 import { RecentOrders } from '@/components/dashboard/RecentOrders';
 

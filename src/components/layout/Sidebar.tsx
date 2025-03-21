@@ -1,4 +1,4 @@
-import logo from '../../assets/Logo.png';
+import logo from '@/assets/Logo.png';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -52,7 +52,7 @@ const Sidebar = () => {
           <div className="w-full flex justify-center">
             <img 
               src={logo} 
-              alt="Oriwa International" 
+              alt="Griwa International" 
               className="h-10 max-w-full object-contain"
             />
           </div>
@@ -72,6 +72,8 @@ const Sidebar = () => {
           <SidebarLink icon={Users} label="Customers" to="/customers" isCollapsed={collapsed} />
           <SidebarLink icon={MessageSquare} label="Messages" to="/messages" isCollapsed={collapsed} />
           <SidebarLink icon={Calendar} label="Calendar" to="/calendar" isCollapsed={collapsed} />
+
+          
         </div>
         
         <div className="pt-4 mt-4 border-t border-sidebar-border/50 space-y-1">
