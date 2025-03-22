@@ -12,11 +12,22 @@ import {
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
 import { Link } from 'react-router-dom';
+// Import the logo from assets
+import logo from '@/assets/Logo.png';
 
 const Header = () => {
   return (
     <header className="h-16 border-b border-border bg-white flex items-center justify-between px-6">
       <div className="flex items-center w-1/3">
+      <Link to="/">
+        <div className="flex items-center mr-4">
+          <img
+            src={logo}
+            alt="Griwa International"
+            className="h-10 w-auto max-w-[180px] object-contain transition-all duration-300 hover:scale-105"
+          />
+        </div>
+      </Link>
         <div className="relative w-full max-w-md">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input 

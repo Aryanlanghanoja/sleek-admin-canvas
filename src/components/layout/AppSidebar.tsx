@@ -24,9 +24,6 @@ import {
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
 
-// Import the logo from assets
-import logo from '@/assets/Logo.png';
-
 const menuItems = [
   {
     title: "Dashboard",
@@ -80,11 +77,15 @@ const AppSidebar = () => {
     <Sidebar variant="sidebar" collapsible="icon">
       <SidebarHeader>
         <div className="flex items-center justify-center p-2">
-          <img
+          {/* <img
             src={logo}
-            alt="Oriwa International"
+            alt="Griwa International"
             className="h-8 max-w-full object-contain"
-          />
+          /> */}
+
+          <span className="relative text-xl font-extrabold uppercase bg-gradient-to-r from-orange-500 via-orange-300 to-yellow-300 bg-clip-text text-transparent tracking-wider p-1 border-b-2 border-orange-400">
+            Griwa International
+          </span>
         </div>
       </SidebarHeader>
       <SidebarContent>
