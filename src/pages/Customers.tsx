@@ -10,10 +10,10 @@ const Customers = () => {
         <title>Customers | Griwa International</title>
       </Helmet>
       <div className="p-6 space-y-8">
-        <div className="flex justify-between items-center">
+        <div className="dashboard-header flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Leads</h1>
-            <p className="text-gray-500">Manage and track all your leads.</p>
+            <h1 className="text-3xl font-bold tracking-tight">Customers</h1>
+            <p className="text-gray-500">Manage and track all your customers.</p>
           </div>
         </div>
         

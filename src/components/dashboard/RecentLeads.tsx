@@ -126,9 +126,9 @@ export const RecentLeads = ({ fullPage = false }: RecentLeadsProps) => {
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div>
           <CardTitle className="text-xl font-bold">Recent Leads</CardTitle>
-          <CardDescription>
+          {/* <CardDescription>
             {fullPage ? 'Manage all your leads' : 'Recently added leads and their current status'}
-          </CardDescription>
+          </CardDescription> */}
         </div>
         {!fullPage && (
           <Button variant="outline" size="sm" asChild>
