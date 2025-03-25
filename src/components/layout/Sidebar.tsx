@@ -67,7 +67,7 @@ const Sidebar = () => {
           <div className="w-full flex justify-center">
             <img 
               src={logo} 
-              alt="Oriwa International" 
+              alt="Griwa International" 
               className="h-12 max-w-full object-contain transition-transform hover:scale-105"
             />
           </div>

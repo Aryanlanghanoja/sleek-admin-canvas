@@ -118,8 +118,8 @@ const AppSidebar = () => {
       </SidebarContent>
 
       {/* Footer */}
-      <SidebarFooter className="bg-gray-900 p-4 border-t border-gray-700">
-        <div className="text-center text-white-400 text-xs">
+      <SidebarFooter className="bg-gray-900 p-4 border-t border-gray-800">
+        <div className="text-center text-white-800 text-xs">
           Griwa International © {new Date().getFullYear()}
         </div>
       </SidebarFooter>
