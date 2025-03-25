@@ -1,107 +1,157 @@
-import { useState, FormEvent, MouseEvent } from 'react';
+import React, { useState, FormEvent, MouseEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Helmet } from 'react-helmet';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const GoogleIcon: React.FC = () => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="24" 
-    height="24" 
-    viewBox="0 0 24 24" 
-    className="mr-2"
-  >
-    <path 
-      fill="#4285F4" 
-      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-    />
-    <path 
-      fill="#34A853" 
-      d="M12 23c2.97 0 5.46-1 7.28-2.69l-3.57-2.77c-.99.69-2.26 1.1-3.71 1.1-2.87 0-5.3-1.94-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-    />
-    <path 
-      fill="#FBBC05" 
-      d="M5.84 14.11c-.22-.69-.35-1.43-.35-2.11s.13-1.42.35-2.11V7.05H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.95l3.66-2.84z"
-    />
-    <path 
-      fill="#EA4335" 
-      d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.05l3.66 2.84c.86-2.59 3.29-4.51 6.16-4.51z"
-    />
-  </svg>
-);
+// Import SVGs as image URLs
+import GoogleLogo from '@/assets/Google_Logo.svg';
+import AppleLogo from '@/assets/Apple_Logo.svg';
+import MetaLogo from '@/assets/Meta_Logo.svg';
+import MicrosoftLogo from '@/assets/Microsoft_Logo.svg';
+
+// Import eye icons for password toggle
+import { Eye, EyeOff } from 'lucide-react';
+import { title } from 'process';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    // Add your login logic here
     console.log('Login attempt:', { username, password });
   };
 
   const handleGoogleSignIn = (e: MouseEvent<HTMLButtonElement>): void => {
-    // Add Google sign-in logic here
     console.log('Google Sign-In clicked');
   };
 
+  const handleAppleSignIn = (e: MouseEvent<HTMLButtonElement>): void => {
+    console.log('Apple Sign-In clicked');
+  };
+
+  const handleMicrosoftSignIn = (e: MouseEvent<HTMLButtonElement>): void => {
+    console.log('Microsoft Sign-In clicked');
+  };
+
+  const handleMetaSignIn = (e: MouseEvent<HTMLButtonElement>): void => {
+    console.log('Meta Sign-In clicked');
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <Card className="w-full max-w-md p-6">
-        <CardHeader>
-          <CardTitle className="text-center text-2xl">Login</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                Username
-              </label>
-              <Input 
-                id="username"
-                type="text" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your username"
-                required
-                className="w-full"
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Password
-              </label>
-              <Input 
-                id="password"
-                type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                required
-                className="w-full"
-              />
-            </div>
-            <Button type="submit" className="w-full">
-              Login
-            </Button>
-            <div className="flex items-center justify-center my-4">
-              <div className="border-t border-gray-300 flex-grow mr-3"></div>
-              <span className="text-gray-500">or</span>
-              <div className="border-t border-gray-300 flex-grow ml-3"></div>
-            </div>
-            <Button 
-              type="button" 
-              // variant="outline" 
-              className="w-full flex items-center justify-center"
-              onClick={handleGoogleSignIn}
-            >
-              <GoogleIcon />
-              Sign in with Google
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+    <>
+      <div>
+        <Helmet>
+          <title>Login | Griwa International</title>
+        </Helmet>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+          <Card className="w-full max-w-md p-6">
+            <CardHeader>
+              <CardTitle className="text-center text-2xl">Login</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                
+                {/* Username Field */}
+                <div>
+                  <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+                    Username
+                  </label>
+                  <Input
+                    id="username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter your username"
+                    required
+                    className="w-full"
+                  />
+                </div>
+
+                {/* Password Field with Show/Hide Icon */}
+                <div className="relative">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+                    Password
+                  </label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? 'text' : 'password'}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter your password"
+                      required
+                      className="w-full pr-10"
+                    />
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+                    >
+                      {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    </button>
+                  </div>
+                </div>
+
+                <Button type="submit" className="w-full">
+                  Login
+                </Button>
+
+                <div className="flex items-center justify-center my-4">
+                  <div className="border-t border-gray-300 flex-grow mr-3"></div>
+                  <span className="text-gray-500">or</span>
+                  <div className="border-t border-gray-300 flex-grow ml-3"></div>
+                </div>
+
+                {/* Social Login Buttons */}
+                <Button
+                  type="button"
+                  className="w-full flex items-center justify-center"
+                  onClick={handleGoogleSignIn}
+                >
+                  <img src={GoogleLogo} alt="Google Logo" className="w-6 h-6 mr-2" />
+                  Sign in with Google
+                </Button>
+
+                <Button
+                  type="button"
+                  className="w-full flex items-center justify-center"
+                  onClick={handleAppleSignIn}
+                >
+                  <img src={AppleLogo} alt="Apple Logo" className="w-6 h-6 mr-2" />
+                  Sign in with Apple
+                </Button>
+
+                <Button
+                  type="button"
+                  className="w-full flex items-center justify-center"
+                  onClick={handleMetaSignIn}
+                >
+                  <img src={MetaLogo} alt="Meta Logo" className="w-6 h-6 mr-2" />
+                  Sign in with Meta
+                </Button>
+
+                <Button
+                  type="button"
+                  className="w-full flex items-center justify-center"
+                  onClick={handleMicrosoftSignIn}
+                >
+                  <img src={MicrosoftLogo} alt="Microsoft Logo" className="w-6 h-6 mr-2" />
+                  Sign in with Microsoft
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </>
+    
   );
 };
 

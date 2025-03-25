@@ -18,7 +18,7 @@ const Customers = () => {
         </div>
         
         <div className="grid grid-cols-1 gap-6 w-full">
-          <RecentLeads fullPage />
+          {/* <RecentLeads fullPage /> */}
           <ProductCustomers />
         </div>
       </div>
